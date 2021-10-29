@@ -15,6 +15,10 @@ export class UsuarioJurado extends Entity {
   })
   password: string;
 
+  @property({
+    type: 'number',
+  })
+  juradosId?: number;
 
   constructor(data?: Partial<UsuarioJurado>) {
     super(data);

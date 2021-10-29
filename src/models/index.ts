@@ -15,3 +15,8 @@ export * from './evaluacion-comite.model';
 export * from './resultado-evaluacion.model';
 export * from './jurados.model';
 export * from './usuario-jurado.model';
+export * from './departamento-proponente.model';
+export * from './evaluacion-solicitud.model';
+export * from './adsnasd.model';
+export * from './jurados-investigacion.model';
+export * from './usuario-roles.model';

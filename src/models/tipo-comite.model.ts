@@ -1,4 +1,6 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Solicitud} from './solicitud.model';
+import {ComiteSolicitud} from './comite-solicitud.model';
 
 @model()
 export class TipoComite extends Entity {
@@ -15,6 +17,8 @@ export class TipoComite extends Entity {
   })
   name: string;
 
+  @hasMany(() => Solicitud, {through: {model: () => ComiteSolicitud}})
+  tieneComiteSolicitud: Solicitud[];
 
   constructor(data?: Partial<TipoComite>) {
     super(data);

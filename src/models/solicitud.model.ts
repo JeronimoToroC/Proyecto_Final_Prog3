@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Recordatorios} from './recordatorios.model';
 
 @model()
 export class Solicitud extends Entity {
@@ -40,6 +41,23 @@ export class Solicitud extends Entity {
   })
   description: string;
 
+  @property({
+    type: 'number',
+  })
+  lineasInvestigacionId?: number;
+
+  @property({
+    type: 'number',
+  })
+  modalidadId?: number;
+
+  @hasMany(() => Recordatorios)
+  tienemuchosRecordatorios: Recordatorios[];
+
+  @property({
+    type: 'number',
+  })
+  tipoSolicitudId?: number;
 
   constructor(data?: Partial<Solicitud>) {
     super(data);
