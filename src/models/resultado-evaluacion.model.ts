@@ -21,6 +21,10 @@ export class ResultadoEvaluacion extends Entity {
   })
   completedFormat: any;
 
+  @property({
+    type: 'string',
+  })
+  evaluacionSolicitudId?: string;
 
   constructor(data?: Partial<ResultadoEvaluacion>) {
     super(data);
