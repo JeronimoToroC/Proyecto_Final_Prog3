@@ -1,14 +1,14 @@
-import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Entity, hasMany, model, property} from '@loopback/repository';
 import {ResultadoEvaluacion} from './resultado-evaluacion.model';
 
 @model({settings: {strict: false}})
 export class EvaluacionSolicitud extends Entity {
   @property({
-    type: 'string',
+    type: 'number',
     id: true,
     generated: true,
   })
-  id?: string;
+  id?: number;
 
   @property({
     type: 'number',
