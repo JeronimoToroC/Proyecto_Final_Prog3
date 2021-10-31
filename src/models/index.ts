@@ -11,12 +11,9 @@ export * from './modalidad.model';
 export * from './proponente.model';
 export * from './recordatorios.model';
 export * from './resultado-evaluacion.model';
-export * from './roles.model';
 export * from './solicitud.model';
 export * from './tipo-comite.model';
 export * from './tipo-solicitud.model';
 export * from './tipo-vinculacion.model';
 export * from './usuario-jurado.model';
-export * from './usuario-roles.model';
-export * from './usuario.model';
 
