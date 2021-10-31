@@ -1,5 +1,6 @@
-import {Entity, model, property, belongsTo} from '@loopback/repository';
+import {Entity, model, property, belongsTo, hasMany} from '@loopback/repository';
 import {TipoVinculacion} from './tipo-vinculacion.model';
+import {Solicitud} from './solicitud.model';
 
 @model()
 export class Proponente extends Entity {
@@ -57,6 +58,9 @@ export class Proponente extends Entity {
 
   @belongsTo(() => TipoVinculacion, {name: 'perteneceTipoVinculacion'})
   tipoVinculacionId: number;
+
+  @hasMany(() => Solicitud)
+  solicituds: Solicitud[];
 
   constructor(data?: Partial<Proponente>) {
     super(data);
