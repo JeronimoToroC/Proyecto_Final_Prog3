@@ -1,3 +1,5 @@
+export * from './carga-documentos-solicitud.controller';
+export * from './carga-fotoProponete.controller';
 export * from './comite-solicitud.controller';
 export * from './departamento-facultad.controller';
 export * from './departamento-proponente.controller';
@@ -26,4 +28,6 @@ export * from './tipo-solicitud-solicitud.controller';
 export * from './tipo-solicitud.controller';
 export * from './tipo-vinculacion.controller';
 export * from './usuario-jurado.controller';
+
+
 
