@@ -1,9 +1,20 @@
-import {Entity, model, property, belongsTo, hasMany} from '@loopback/repository';
+import {belongsTo, Entity, hasMany, model, property} from '@loopback/repository';
+import {DepartamentoProponente} from './departamento-proponente.model';
 import {Facultad} from './facultad.model';
 import {Proponente} from './proponente.model';
-import {DepartamentoProponente} from './departamento-proponente.model';
 
-@model()
+@model({
+  settings: {
+    foreignKeys: {
+      fk_dep_id_fac: {
+        name: 'fk_dep_id_fac',
+        entity: 'Facultad',
+        entityKey: 'id',
+        foreignKey: 'facultadId',
+      },
+    }
+  }
+})
 export class Departamento extends Entity {
   @property({
     type: 'number',

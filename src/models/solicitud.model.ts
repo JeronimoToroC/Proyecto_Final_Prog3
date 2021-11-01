@@ -1,7 +1,36 @@
-import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Entity, hasMany, model, property} from '@loopback/repository';
 import {Recordatorios} from './recordatorios.model';
 
-@model()
+@model({
+  settings: {
+    foreignKeys: {
+      fk_sol_id_prop: {
+        name: 'fk_sol_id_prop',
+        entity: 'Proponente',
+        entityKey: 'id',
+        foreignKey: 'proponenteId',
+      },
+      fk_sol_id_mod: {
+        name: 'fk_sol_id_mod',
+        entity: 'Modalidad',
+        entityKey: 'id',
+        foreignKey: 'modalidadId',
+      },
+      fk_sol_id_lin_inv: {
+        name: 'fk_sol_id_lin_inv',
+        entity: 'LineasInvestigacion',
+        entityKey: 'id',
+        foreignKey: 'lineasInvestigacionId',
+      },
+      fk_sol_id_tip_sol: {
+        name: 'fk_sol_id_tip_sol',
+        entity: 'TipoSolicitud',
+        entityKey: 'id',
+        foreignKey: 'tipoSolicitudId',
+      },
+    }
+  }
+})
 export class Solicitud extends Entity {
   @property({
     type: 'number',
@@ -58,6 +87,11 @@ export class Solicitud extends Entity {
     type: 'number',
   })
   tipoSolicitudId?: number;
+
+  @property({
+    type: 'number',
+  })
+  proponenteId?: number;
 
   constructor(data?: Partial<Solicitud>) {
     super(data);
