@@ -29,3 +29,4 @@ export * from './usuario-jurado.controller';
 export * from './usuario-roles.controller';
 export * from './usuario.controller';
 
+export * from './descargar-archivos.controller';
