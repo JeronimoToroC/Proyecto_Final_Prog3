@@ -29,7 +29,7 @@ export class CargaFotoProponente {
    * @param response
    * @param request
    */
-  @post('/CargarFotoProponente/', {
+  @post('/CargarFotoProponente/{id_proponente}', {
     responses: {
       200: {
         content: {
@@ -46,7 +46,7 @@ export class CargaFotoProponente {
   async cargarFotoProponente(
     @inject(RestBindings.Http.RESPONSE) response: Response,
     @requestBody.file() request: Request,
-    @param.path.number("id_vehiculo") id: number
+    @param.path.number("id_proponente") id: number
   ): Promise<object | false> {
     const rutaDocumento = path.join(__dirname, llaves.carpetaFotoProponente);
     const res = await this.StoreFileToPath(rutaDocumento, llaves.nombreCampoFotoProponente, request, response, llaves.extensionesPermitidasIMG);
