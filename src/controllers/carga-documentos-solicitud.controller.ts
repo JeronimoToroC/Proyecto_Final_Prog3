@@ -29,7 +29,7 @@ export class CargaDocumentosController {
    * @param response
    * @param request
    */
-  @post('/CargarDocumento/', {
+  @post('/CargarDocumento/{id_solicitud}', {
     responses: {
       200: {
         content: {
@@ -46,7 +46,7 @@ export class CargaDocumentosController {
   async cargarDocumentoSolicitud(
     @inject(RestBindings.Http.RESPONSE) response: Response,
     @requestBody.file() request: Request,
-    @param.path.number("id_vehiculo") id: number
+    @param.path.number("id_solicitud") id: number
   ): Promise<object | false> {
     const rutaDocumento = path.join(__dirname, llaves.carpetaDocumento);
     const res = await this.StoreFileToPath(rutaDocumento, llaves.nombreCampoDocumento, request, response, llaves.extensionesPermitidasDOC);
