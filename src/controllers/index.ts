@@ -28,3 +28,4 @@ export * from './tipo-vinculacion.controller';
 export * from './usuario-jurado.controller';
 
 export * from './descargar-archivos.controller';
+export * from './proponente-solicitud.controller';

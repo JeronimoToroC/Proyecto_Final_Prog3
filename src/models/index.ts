@@ -17,3 +17,4 @@ export * from './tipo-solicitud.model';
 export * from './tipo-vinculacion.model';
 export * from './usuario-jurado.model';
 
+export * from './solicitudes-proponentes.model';

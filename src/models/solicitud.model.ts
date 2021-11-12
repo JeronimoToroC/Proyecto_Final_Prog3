@@ -4,12 +4,6 @@ import {Recordatorios} from './recordatorios.model';
 @model({
   settings: {
     foreignKeys: {
-      fk_sol_id_prop: {
-        name: 'fk_sol_id_prop',
-        entity: 'Proponente',
-        entityKey: 'id',
-        foreignKey: 'proponenteId',
-      },
       fk_sol_id_mod: {
         name: 'fk_sol_id_mod',
         entity: 'Modalidad',
@@ -87,11 +81,6 @@ export class Solicitud extends Entity {
     type: 'number',
   })
   tipoSolicitudId?: number;
-
-  @property({
-    type: 'number',
-  })
-  proponenteId?: number;
 
   constructor(data?: Partial<Solicitud>) {
     super(data);
