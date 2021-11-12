@@ -16,3 +16,4 @@ export * from './tipo-solicitud.repository';
 export * from './tipo-vinculacion.repository';
 export * from './usuario-jurado.repository';
 
+export * from './solicitudes-proponentes.repository';
