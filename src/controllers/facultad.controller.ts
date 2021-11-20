@@ -1,21 +1,16 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
 import {Facultad} from '../models';
 import {FacultadRepository} from '../repositories';
@@ -23,9 +18,10 @@ import {FacultadRepository} from '../repositories';
 export class FacultadController {
   constructor(
     @repository(FacultadRepository)
-    public facultadRepository : FacultadRepository,
-  ) {}
+    public facultadRepository: FacultadRepository,
+  ) { }
 
+  @authenticate("admin")
   @post('/facultads')
   @response(200, {
     description: 'Facultad model instance',
