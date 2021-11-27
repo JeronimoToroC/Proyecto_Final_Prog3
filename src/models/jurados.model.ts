@@ -1,8 +1,8 @@
 import {Entity, hasMany, model, property} from '@loopback/repository';
 import {EvaluacionSolicitud} from './evaluacion-solicitud.model';
-import {UsuarioJurado} from './usuario-jurado.model';
-import {LineasInvestigacion} from './lineas-investigacion.model';
 import {JuradosInvestigacion} from './jurados-investigacion.model';
+import {LineasInvestigacion} from './lineas-investigacion.model';
+import {UsuarioJurado} from './usuario-jurado.model';
 
 @model()
 export class Jurados extends Entity {
@@ -13,22 +13,11 @@ export class Jurados extends Entity {
   })
   id?: number;
 
-  @property({
-    type: 'string',
-    required: true,
-  })
-  name: string;
-
-  @property({
-    type: 'string',
-  })
-  tel?: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  email: string;
+  /*   @property({
+      type: 'string',
+      id: true,
+    })
+    idUser?: string; */
 
   @property({
     type: 'any',

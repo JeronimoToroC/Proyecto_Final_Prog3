@@ -3,9 +3,9 @@ import {
   CountSchema,
   Filter,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
-  import {
+import {
   del,
   get,
   getModelSchemaRef,
@@ -13,12 +13,11 @@ import {
   param,
   patch,
   post,
-  requestBody,
+  requestBody
 } from '@loopback/rest';
 import {
-Proponente,
-SolicitudesProponentes,
-Solicitud,
+  Proponente,
+  Solicitud
 } from '../models';
 import {ProponenteRepository} from '../repositories';
 
@@ -30,7 +29,7 @@ export class ProponenteSolicitudController {
   @get('/proponentes/{id}/solicituds', {
     responses: {
       '200': {
-        description: 'Array of Proponente has many Solicitud through SolicitudesProponentes',
+        description: 'Array of Proponente has many Solicitud',
         content: {
           'application/json': {
             schema: {type: 'array', items: getModelSchemaRef(Solicitud)},
@@ -49,7 +48,7 @@ export class ProponenteSolicitudController {
   @post('/proponentes/{id}/solicituds', {
     responses: {
       '200': {
-        description: 'create a Solicitud model instance',
+        description: 'Proponente model instance',
         content: {'application/json': {schema: getModelSchemaRef(Solicitud)}},
       },
     },
@@ -62,6 +61,7 @@ export class ProponenteSolicitudController {
           schema: getModelSchemaRef(Solicitud, {
             title: 'NewSolicitudInProponente',
             exclude: ['id'],
+            optional: ['proponenteId']
           }),
         },
       },

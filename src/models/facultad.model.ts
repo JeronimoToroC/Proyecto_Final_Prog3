@@ -15,6 +15,12 @@ export class Facultad extends Entity {
   })
   name: string;
 
+  @property({
+    type: 'string',
+    required: true,
+  })
+  codigo: string;
+
 
   constructor(data?: Partial<Facultad>) {
     super(data);

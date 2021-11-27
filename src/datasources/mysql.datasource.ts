@@ -5,11 +5,11 @@ const config = {
   name: 'mysql',
   connector: 'mysql',
   url: '',
-  host: 'localhost',
+  host: 'db-prog3.ctneffd2dykt.us-east-1.rds.amazonaws.com',
   port: 3306,
-  user: 'root',
-  password: '1234',
-  database: 'proyectofinalprog3'
+  user: 'admin',
+  password: 'Prog3basedatos',
+  database: 'DB_Prog3'
 };
 
 // Observe application's life cycle to disconnect the datasource when
