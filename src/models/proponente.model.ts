@@ -1,7 +1,8 @@
-import {belongsTo, Entity, model, property, hasMany} from '@loopback/repository';
-import {TipoVinculacion} from './tipo-vinculacion.model';
+import {belongsTo, Entity, hasMany, model, property} from '@loopback/repository';
 import {Solicitud} from './solicitud.model';
-import {SolicitudesProponentes} from './solicitudes-proponentes.model';
+import {TipoVinculacion} from './tipo-vinculacion.model';
+
+const URLBASE = "http://localhost:3001"
 
 @model()
 export class Proponente extends Entity {
@@ -12,55 +13,16 @@ export class Proponente extends Entity {
   })
   id?: number;
 
-  @property({
-    type: 'string',
-    required: true,
-  })
-  documentNumber: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  firstName: string;
-
-  @property({
-    type: 'string',
-  })
-  otherNames?: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  lastname: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  lastname2: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  email: string;
-
-  @property({
-    type: 'string',
-  })
-  tel?: string;
-
-  @property({
-    type: 'string',
-  })
-  foto?: any;
+  /*   @property({
+      type: 'string',
+      id: true,
+    })
+    idUsers?: string; */
 
   @belongsTo(() => TipoVinculacion, {name: 'perteneceTipoVinculacion'})
   tipoVinculacionId: number;
 
-  @hasMany(() => Solicitud, {through: {model: () => SolicitudesProponentes}})
+  @hasMany(() => Solicitud)
   solicituds: Solicitud[];
 
   constructor(data?: Partial<Proponente>) {

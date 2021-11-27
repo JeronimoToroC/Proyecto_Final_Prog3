@@ -5,14 +5,14 @@ import {Proponente} from './proponente.model';
 
 @model({
   settings: {
-    foreignKeys: {
+    /* foreignKeys: {
       fk_dep_id_fac: {
         name: 'fk_dep_id_fac',
         entity: 'Facultad',
         entityKey: 'id',
         foreignKey: 'facultadId',
       },
-    }
+    } */
   }
 })
 export class Departamento extends Entity {

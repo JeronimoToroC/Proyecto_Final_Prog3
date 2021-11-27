@@ -1,21 +1,16 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
 import {TipoComite} from '../models';
 import {TipoComiteRepository} from '../repositories';
@@ -23,9 +18,10 @@ import {TipoComiteRepository} from '../repositories';
 export class TipoComiteController {
   constructor(
     @repository(TipoComiteRepository)
-    public tipoComiteRepository : TipoComiteRepository,
-  ) {}
+    public tipoComiteRepository: TipoComiteRepository,
+  ) { }
 
+  @authenticate("admin")
   @post('/tipo-comites')
   @response(200, {
     description: 'TipoComite model instance',
@@ -47,6 +43,7 @@ export class TipoComiteController {
     return this.tipoComiteRepository.create(tipoComite);
   }
 
+  @authenticate("admin")
   @get('/tipo-comites/count')
   @response(200, {
     description: 'TipoComite model count',
@@ -58,6 +55,7 @@ export class TipoComiteController {
     return this.tipoComiteRepository.count(where);
   }
 
+  @authenticate("admin")
   @get('/tipo-comites')
   @response(200, {
     description: 'Array of TipoComite model instances',
@@ -76,6 +74,7 @@ export class TipoComiteController {
     return this.tipoComiteRepository.find(filter);
   }
 
+  @authenticate("admin")
   @patch('/tipo-comites')
   @response(200, {
     description: 'TipoComite PATCH success count',
@@ -95,6 +94,7 @@ export class TipoComiteController {
     return this.tipoComiteRepository.updateAll(tipoComite, where);
   }
 
+  @authenticate("admin")
   @get('/tipo-comites/{id}')
   @response(200, {
     description: 'TipoComite model instance',
@@ -111,6 +111,7 @@ export class TipoComiteController {
     return this.tipoComiteRepository.findById(id, filter);
   }
 
+  @authenticate("admin")
   @patch('/tipo-comites/{id}')
   @response(204, {
     description: 'TipoComite PATCH success',
@@ -129,6 +130,7 @@ export class TipoComiteController {
     await this.tipoComiteRepository.updateById(id, tipoComite);
   }
 
+  @authenticate("admin")
   @put('/tipo-comites/{id}')
   @response(204, {
     description: 'TipoComite PUT success',
@@ -140,6 +142,7 @@ export class TipoComiteController {
     await this.tipoComiteRepository.replaceById(id, tipoComite);
   }
 
+  @authenticate("admin")
   @del('/tipo-comites/{id}')
   @response(204, {
     description: 'TipoComite DELETE success',

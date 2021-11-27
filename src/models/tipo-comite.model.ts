@@ -1,6 +1,6 @@
-import {Entity, model, property, hasMany} from '@loopback/repository';
-import {Solicitud} from './solicitud.model';
+import {Entity, hasMany, model, property} from '@loopback/repository';
 import {ComiteSolicitud} from './comite-solicitud.model';
+import {Solicitud} from './solicitud.model';
 
 @model()
 export class TipoComite extends Entity {
@@ -15,7 +15,7 @@ export class TipoComite extends Entity {
     type: 'string',
     required: true,
   })
-  name: string;
+  nombre: string;
 
   @hasMany(() => Solicitud, {through: {model: () => ComiteSolicitud}})
   tieneComiteSolicitud: Solicitud[];

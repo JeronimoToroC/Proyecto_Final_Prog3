@@ -1,31 +1,31 @@
+import {authenticate} from '@loopback/authentication';
+import {service} from '@loopback/core';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
 import {Solicitud} from '../models';
 import {SolicitudRepository} from '../repositories';
+import {NotificacionesService} from '../services';
 
 export class SolicitudController {
   constructor(
     @repository(SolicitudRepository)
-    public solicitudRepository : SolicitudRepository,
-  ) {}
+    public solicitudRepository: SolicitudRepository,
+    @service(NotificacionesService)
+    public servicioNotificaciones: NotificacionesService
+  ) { }
 
+  @authenticate("admin")
   @post('/solicituds')
   @response(200, {
     description: 'Solicitud model instance',
@@ -42,11 +42,12 @@ export class SolicitudController {
         },
       },
     })
-    solicitud: Omit<Solicitud, 'id'>,
+    solicitud: Omit<Solicitud, 'id'>
   ): Promise<Solicitud> {
     return this.solicitudRepository.create(solicitud);
   }
 
+  @authenticate("admin")
   @get('/solicituds/count')
   @response(200, {
     description: 'Solicitud model count',
@@ -58,6 +59,7 @@ export class SolicitudController {
     return this.solicitudRepository.count(where);
   }
 
+  @authenticate("admin")
   @get('/solicituds')
   @response(200, {
     description: 'Array of Solicitud model instances',
@@ -76,6 +78,7 @@ export class SolicitudController {
     return this.solicitudRepository.find(filter);
   }
 
+  @authenticate("admin")
   @patch('/solicituds')
   @response(200, {
     description: 'Solicitud PATCH success count',
@@ -95,6 +98,7 @@ export class SolicitudController {
     return this.solicitudRepository.updateAll(solicitud, where);
   }
 
+  @authenticate("admin")
   @get('/solicituds/{id}')
   @response(200, {
     description: 'Solicitud model instance',
@@ -111,6 +115,7 @@ export class SolicitudController {
     return this.solicitudRepository.findById(id, filter);
   }
 
+  @authenticate("admin")
   @patch('/solicituds/{id}')
   @response(204, {
     description: 'Solicitud PATCH success',
@@ -129,6 +134,7 @@ export class SolicitudController {
     await this.solicitudRepository.updateById(id, solicitud);
   }
 
+  @authenticate("admin")
   @put('/solicituds/{id}')
   @response(204, {
     description: 'Solicitud PUT success',
@@ -140,6 +146,7 @@ export class SolicitudController {
     await this.solicitudRepository.replaceById(id, solicitud);
   }
 
+  @authenticate("admin")
   @del('/solicituds/{id}')
   @response(204, {
     description: 'Solicitud DELETE success',

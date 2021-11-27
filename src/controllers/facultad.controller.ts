@@ -43,6 +43,7 @@ export class FacultadController {
     return this.facultadRepository.create(facultad);
   }
 
+  @authenticate("admin")
   @get('/facultads/count')
   @response(200, {
     description: 'Facultad model count',
@@ -54,6 +55,7 @@ export class FacultadController {
     return this.facultadRepository.count(where);
   }
 
+  @authenticate("admin")
   @get('/facultads')
   @response(200, {
     description: 'Array of Facultad model instances',
@@ -72,6 +74,7 @@ export class FacultadController {
     return this.facultadRepository.find(filter);
   }
 
+  @authenticate("admin")
   @patch('/facultads')
   @response(200, {
     description: 'Facultad PATCH success count',
@@ -91,6 +94,7 @@ export class FacultadController {
     return this.facultadRepository.updateAll(facultad, where);
   }
 
+  @authenticate("admin")
   @get('/facultads/{id}')
   @response(200, {
     description: 'Facultad model instance',
@@ -107,6 +111,7 @@ export class FacultadController {
     return this.facultadRepository.findById(id, filter);
   }
 
+  @authenticate("admin")
   @patch('/facultads/{id}')
   @response(204, {
     description: 'Facultad PATCH success',
@@ -125,6 +130,7 @@ export class FacultadController {
     await this.facultadRepository.updateById(id, facultad);
   }
 
+  @authenticate("admin")
   @put('/facultads/{id}')
   @response(204, {
     description: 'Facultad PUT success',
@@ -136,6 +142,7 @@ export class FacultadController {
     await this.facultadRepository.replaceById(id, facultad);
   }
 
+  @authenticate("admin")
   @del('/facultads/{id}')
   @response(204, {
     description: 'Facultad DELETE success',
