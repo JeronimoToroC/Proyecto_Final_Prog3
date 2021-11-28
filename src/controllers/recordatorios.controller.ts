@@ -1,21 +1,16 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
 import {Recordatorios} from '../models';
 import {RecordatoriosRepository} from '../repositories';
@@ -23,9 +18,10 @@ import {RecordatoriosRepository} from '../repositories';
 export class RecordatoriosController {
   constructor(
     @repository(RecordatoriosRepository)
-    public recordatoriosRepository : RecordatoriosRepository,
-  ) {}
+    public recordatoriosRepository: RecordatoriosRepository,
+  ) { }
 
+  @authenticate("admin")
   @post('/recordatorios')
   @response(200, {
     description: 'Recordatorios model instance',
@@ -47,6 +43,7 @@ export class RecordatoriosController {
     return this.recordatoriosRepository.create(recordatorios);
   }
 
+  @authenticate("admin")
   @get('/recordatorios/count')
   @response(200, {
     description: 'Recordatorios model count',
@@ -58,6 +55,7 @@ export class RecordatoriosController {
     return this.recordatoriosRepository.count(where);
   }
 
+  @authenticate("admin")
   @get('/recordatorios')
   @response(200, {
     description: 'Array of Recordatorios model instances',
@@ -76,6 +74,7 @@ export class RecordatoriosController {
     return this.recordatoriosRepository.find(filter);
   }
 
+  @authenticate("admin")
   @patch('/recordatorios')
   @response(200, {
     description: 'Recordatorios PATCH success count',
@@ -95,6 +94,7 @@ export class RecordatoriosController {
     return this.recordatoriosRepository.updateAll(recordatorios, where);
   }
 
+  @authenticate("admin")
   @get('/recordatorios/{id}')
   @response(200, {
     description: 'Recordatorios model instance',
@@ -111,6 +111,7 @@ export class RecordatoriosController {
     return this.recordatoriosRepository.findById(id, filter);
   }
 
+  @authenticate("admin")
   @patch('/recordatorios/{id}')
   @response(204, {
     description: 'Recordatorios PATCH success',
@@ -129,6 +130,7 @@ export class RecordatoriosController {
     await this.recordatoriosRepository.updateById(id, recordatorios);
   }
 
+  @authenticate("admin")
   @put('/recordatorios/{id}')
   @response(204, {
     description: 'Recordatorios PUT success',
@@ -140,6 +142,7 @@ export class RecordatoriosController {
     await this.recordatoriosRepository.replaceById(id, recordatorios);
   }
 
+  @authenticate("admin")
   @del('/recordatorios/{id}')
   @response(204, {
     description: 'Recordatorios DELETE success',

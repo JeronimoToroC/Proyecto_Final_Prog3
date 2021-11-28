@@ -1,6 +1,7 @@
 // Uncomment these imports to begin using these cool features!
 
 // import {inject} from '@loopback/core';
+import {authenticate} from '@loopback/authentication';
 import {inject} from '@loopback/core';
 import {repository} from '@loopback/repository';
 import {
@@ -29,6 +30,7 @@ export class CargaFotoProponente {
    * @param response
    * @param request
    */
+  @authenticate("admin")
   @post('/CargarFotoProponente/{id_proponente}', {
     responses: {
       200: {
@@ -54,8 +56,6 @@ export class CargaFotoProponente {
       const nombre_foto = response.req?.file?.filename;
       if (nombre_foto) {
         const foto = new Proponente();
-        foto.foto = id;
-        foto.firstName = nombre_foto;
         await this.fotoRepository.save(foto);
         return {filename: nombre_foto};
       }

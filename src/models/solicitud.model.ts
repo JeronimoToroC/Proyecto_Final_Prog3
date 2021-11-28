@@ -1,9 +1,10 @@
-import {Entity, hasMany, model, property} from '@loopback/repository';
+import {belongsTo, Entity, hasMany, model, property} from '@loopback/repository';
+import {Proponente} from './proponente.model';
 import {Recordatorios} from './recordatorios.model';
 
 @model({
   settings: {
-    foreignKeys: {
+    /* foreignKeys: {
       fk_sol_id_mod: {
         name: 'fk_sol_id_mod',
         entity: 'Modalidad',
@@ -22,7 +23,13 @@ import {Recordatorios} from './recordatorios.model';
         entityKey: 'id',
         foreignKey: 'tipoSolicitudId',
       },
-    }
+      fk_sol_id_prop: {
+        name: 'fk_sol_id_prop',
+        entity: 'Proponente',
+        entityKey: 'id',
+        foreignKey: 'proponenteId',
+      },
+    } */
   }
 })
 export class Solicitud extends Entity {
@@ -81,6 +88,9 @@ export class Solicitud extends Entity {
     type: 'number',
   })
   tipoSolicitudId?: number;
+
+  @belongsTo(() => Proponente)
+  proponenteId: number;
 
   constructor(data?: Partial<Solicitud>) {
     super(data);

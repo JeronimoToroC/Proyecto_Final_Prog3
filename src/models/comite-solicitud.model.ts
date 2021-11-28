@@ -2,7 +2,7 @@ import {Entity, model, property} from '@loopback/repository';
 
 @model({
   settings: {
-    foreignKeys: {
+    /* foreignKeys: {
       fk_com_sol_id_sol: {
         name: 'fk_com_id_sol',
         entity: 'Solicitud',
@@ -15,7 +15,7 @@ import {Entity, model, property} from '@loopback/repository';
         entityKey: 'id',
         foreignKey: 'tipoComiteId',
       },
-    }
+    } */
   }
 })
 export class ComiteSolicitud extends Entity {

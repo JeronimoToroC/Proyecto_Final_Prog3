@@ -1,6 +1,7 @@
 // Uncomment these imports to begin using these cool features!
 
 // import {inject} from '@loopback/core';
+import {authenticate} from '@loopback/authentication';
 import {inject} from '@loopback/core';
 import {repository} from '@loopback/repository';
 import {
@@ -29,6 +30,7 @@ export class CargaDocumentosController {
    * @param response
    * @param request
    */
+  @authenticate("admin")
   @post('/CargarDocumento/{id_solicitud}', {
     responses: {
       200: {

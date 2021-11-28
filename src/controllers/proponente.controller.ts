@@ -1,21 +1,16 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
 import {Proponente} from '../models';
 import {ProponenteRepository} from '../repositories';
@@ -23,9 +18,10 @@ import {ProponenteRepository} from '../repositories';
 export class ProponenteController {
   constructor(
     @repository(ProponenteRepository)
-    public proponenteRepository : ProponenteRepository,
-  ) {}
+    public proponenteRepository: ProponenteRepository,
+  ) { }
 
+  @authenticate("admin")
   @post('/proponentes')
   @response(200, {
     description: 'Proponente model instance',
@@ -47,6 +43,7 @@ export class ProponenteController {
     return this.proponenteRepository.create(proponente);
   }
 
+  @authenticate("admin")
   @get('/proponentes/count')
   @response(200, {
     description: 'Proponente model count',
@@ -58,6 +55,7 @@ export class ProponenteController {
     return this.proponenteRepository.count(where);
   }
 
+  @authenticate("admin")
   @get('/proponentes')
   @response(200, {
     description: 'Array of Proponente model instances',
@@ -76,6 +74,7 @@ export class ProponenteController {
     return this.proponenteRepository.find(filter);
   }
 
+  @authenticate("admin")
   @patch('/proponentes')
   @response(200, {
     description: 'Proponente PATCH success count',
@@ -95,6 +94,7 @@ export class ProponenteController {
     return this.proponenteRepository.updateAll(proponente, where);
   }
 
+  @authenticate("admin")
   @get('/proponentes/{id}')
   @response(200, {
     description: 'Proponente model instance',
@@ -111,6 +111,7 @@ export class ProponenteController {
     return this.proponenteRepository.findById(id, filter);
   }
 
+  @authenticate("admin")
   @patch('/proponentes/{id}')
   @response(204, {
     description: 'Proponente PATCH success',
@@ -129,6 +130,7 @@ export class ProponenteController {
     await this.proponenteRepository.updateById(id, proponente);
   }
 
+  @authenticate("admin")
   @put('/proponentes/{id}')
   @response(204, {
     description: 'Proponente PUT success',
@@ -140,6 +142,7 @@ export class ProponenteController {
     await this.proponenteRepository.replaceById(id, proponente);
   }
 
+  @authenticate("admin")
   @del('/proponentes/{id}')
   @response(204, {
     description: 'Proponente DELETE success',

@@ -7,7 +7,25 @@ export namespace Keys {
   export const nombreCampoDocumento = 'file';
   export const extensionesPermitidasDOC: string[] = ['.PDF', '.DOC', '.DOCX', '.XLS', '.XLSX', '.ZIP'];
   export const rol_administrador = "619194e60b255b2d409dabaf"
+  export const rol_jurado = "619194fe0b255b2d409dabb2"
+  export const rol_proponente = "619194f00b255b2d409dabb0"
+  export const rol_personal = "619194f70b255b2d409dabb1"
   export const url_validar_token = "http://localhost:5001/validar-token"
   export const arg_token = "token";
   export const arg_rol_token = "rol";
+  export const url_notificaciones_email = "http://localhost:5000/email";
+  export const url_notificaciones_sms = "http://localhost:5000/sms";
+  export const hash_notificaciones = "1234";
+  export const asunto_cambio_clave = "Cambio de clave";
+  export const asunto_generacion_clave = "Su clave de acceso al sistama es";
+  export const asunto_registro_solicitud = "Su solicitud ha sido registrada en el sistema";
+  export const asunto_definicion_usuario = "y su usuario es";
+  export const saludo_notificaciones = "Hola ";
+  export const mensaje_cambio_clave = "Se ha modificado su clave en el sistema";
+  export const arg_destino_correo_notificaciones = "email";
+  export const arg_mensaje_correo_notificaciones = "mensaje";
+  export const arg_asunto_correo_notificaciones = "asunto";
+  export const arg_destino_sms_notificaciones = "destino";
+  export const arg_mensaje_sms_notificaciones = "mensaje";
+  export const arg_hash_notificaciones = "hash";
 }

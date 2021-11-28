@@ -3,14 +3,14 @@ import {ResultadoEvaluacion} from './resultado-evaluacion.model';
 
 @model({
   settings: {
-    foreignKeys: {
+    /* foreignKeys: {
       fk_ev_sol_id_jur: {
         name: 'fk_ev_sol_id_jur',
         entity: 'Jurados',
         entityKey: 'id',
         foreignKey: 'juradosId',
       }
-    }
+    } */
   }
 })
 export class EvaluacionSolicitud extends Entity {

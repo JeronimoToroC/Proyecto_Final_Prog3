@@ -18,8 +18,8 @@ import {DepartamentoRepository} from '../repositories';
 export class DepartamentoController {
   constructor(
     @repository(DepartamentoRepository)
-    public departamentoRepository : DepartamentoRepository,
-  ) {}
+    public departamentoRepository: DepartamentoRepository,
+  ) { }
 
   @authenticate("admin")
   @post('/departamentos')
@@ -43,6 +43,7 @@ export class DepartamentoController {
     return this.departamentoRepository.create(departamento);
   }
 
+  @authenticate("admin")
   @get('/departamentos/count')
   @response(200, {
     description: 'Departamento model count',
@@ -54,6 +55,7 @@ export class DepartamentoController {
     return this.departamentoRepository.count(where);
   }
 
+  @authenticate("admin")
   @get('/departamentos')
   @response(200, {
     description: 'Array of Departamento model instances',
@@ -72,6 +74,7 @@ export class DepartamentoController {
     return this.departamentoRepository.find(filter);
   }
 
+  @authenticate("admin")
   @patch('/departamentos')
   @response(200, {
     description: 'Departamento PATCH success count',
@@ -91,6 +94,7 @@ export class DepartamentoController {
     return this.departamentoRepository.updateAll(departamento, where);
   }
 
+  @authenticate("admin")
   @get('/departamentos/{id}')
   @response(200, {
     description: 'Departamento model instance',
@@ -107,6 +111,7 @@ export class DepartamentoController {
     return this.departamentoRepository.findById(id, filter);
   }
 
+  @authenticate("admin")
   @patch('/departamentos/{id}')
   @response(204, {
     description: 'Departamento PATCH success',
@@ -125,6 +130,7 @@ export class DepartamentoController {
     await this.departamentoRepository.updateById(id, departamento);
   }
 
+  @authenticate("admin")
   @put('/departamentos/{id}')
   @response(204, {
     description: 'Departamento PUT success',
@@ -136,6 +142,7 @@ export class DepartamentoController {
     await this.departamentoRepository.replaceById(id, departamento);
   }
 
+  @authenticate("admin")
   @del('/departamentos/{id}')
   @response(204, {
     description: 'Departamento DELETE success',
