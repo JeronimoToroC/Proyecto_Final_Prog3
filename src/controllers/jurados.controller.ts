@@ -1,4 +1,3 @@
-import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -21,7 +20,7 @@ export class JuradosController {
     public juradosRepository: JuradosRepository,
   ) { }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @post('/jurados')
   @response(200, {
     description: 'Jurados model instance',
@@ -43,7 +42,7 @@ export class JuradosController {
     return this.juradosRepository.create(jurados);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/jurados/count')
   @response(200, {
     description: 'Jurados model count',
@@ -55,7 +54,7 @@ export class JuradosController {
     return this.juradosRepository.count(where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/jurados')
   @response(200, {
     description: 'Array of Jurados model instances',
@@ -74,7 +73,7 @@ export class JuradosController {
     return this.juradosRepository.find(filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/jurados')
   @response(200, {
     description: 'Jurados PATCH success count',
@@ -94,7 +93,7 @@ export class JuradosController {
     return this.juradosRepository.updateAll(jurados, where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/jurados/{id}')
   @response(200, {
     description: 'Jurados model instance',
@@ -111,7 +110,7 @@ export class JuradosController {
     return this.juradosRepository.findById(id, filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/jurados/{id}')
   @response(204, {
     description: 'Jurados PATCH success',
@@ -130,7 +129,7 @@ export class JuradosController {
     await this.juradosRepository.updateById(id, jurados);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @put('/jurados/{id}')
   @response(204, {
     description: 'Jurados PUT success',
@@ -142,7 +141,7 @@ export class JuradosController {
     await this.juradosRepository.replaceById(id, jurados);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @del('/jurados/{id}')
   @response(204, {
     description: 'Jurados DELETE success',

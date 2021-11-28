@@ -1,4 +1,3 @@
-import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -21,7 +20,7 @@ export class TipoSolicitudController {
     public tipoSolicitudRepository: TipoSolicitudRepository,
   ) { }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @post('/tipo-solicituds')
   @response(200, {
     description: 'TipoSolicitud model instance',
@@ -43,7 +42,7 @@ export class TipoSolicitudController {
     return this.tipoSolicitudRepository.create(tipoSolicitud);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/tipo-solicituds/count')
   @response(200, {
     description: 'TipoSolicitud model count',
@@ -55,7 +54,7 @@ export class TipoSolicitudController {
     return this.tipoSolicitudRepository.count(where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/tipo-solicituds')
   @response(200, {
     description: 'Array of TipoSolicitud model instances',
@@ -74,7 +73,7 @@ export class TipoSolicitudController {
     return this.tipoSolicitudRepository.find(filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/tipo-solicituds')
   @response(200, {
     description: 'TipoSolicitud PATCH success count',
@@ -94,7 +93,7 @@ export class TipoSolicitudController {
     return this.tipoSolicitudRepository.updateAll(tipoSolicitud, where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/tipo-solicituds/{id}')
   @response(200, {
     description: 'TipoSolicitud model instance',
@@ -111,7 +110,7 @@ export class TipoSolicitudController {
     return this.tipoSolicitudRepository.findById(id, filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/tipo-solicituds/{id}')
   @response(204, {
     description: 'TipoSolicitud PATCH success',
@@ -130,7 +129,7 @@ export class TipoSolicitudController {
     await this.tipoSolicitudRepository.updateById(id, tipoSolicitud);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @put('/tipo-solicituds/{id}')
   @response(204, {
     description: 'TipoSolicitud PUT success',
@@ -142,7 +141,7 @@ export class TipoSolicitudController {
     await this.tipoSolicitudRepository.replaceById(id, tipoSolicitud);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @del('/tipo-solicituds/{id}')
   @response(204, {
     description: 'TipoSolicitud DELETE success',

@@ -1,4 +1,3 @@
-import {authenticate} from '@loopback/authentication';
 import {service} from '@loopback/core';
 import {
   Count,
@@ -25,7 +24,7 @@ export class SolicitudController {
     public servicioNotificaciones: NotificacionesService
   ) { }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @post('/solicituds')
   @response(200, {
     description: 'Solicitud model instance',
@@ -47,7 +46,7 @@ export class SolicitudController {
     return this.solicitudRepository.create(solicitud);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/solicituds/count')
   @response(200, {
     description: 'Solicitud model count',
@@ -59,7 +58,7 @@ export class SolicitudController {
     return this.solicitudRepository.count(where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/solicituds')
   @response(200, {
     description: 'Array of Solicitud model instances',
@@ -78,7 +77,7 @@ export class SolicitudController {
     return this.solicitudRepository.find(filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/solicituds')
   @response(200, {
     description: 'Solicitud PATCH success count',
@@ -98,7 +97,7 @@ export class SolicitudController {
     return this.solicitudRepository.updateAll(solicitud, where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/solicituds/{id}')
   @response(200, {
     description: 'Solicitud model instance',
@@ -115,7 +114,7 @@ export class SolicitudController {
     return this.solicitudRepository.findById(id, filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/solicituds/{id}')
   @response(204, {
     description: 'Solicitud PATCH success',
@@ -134,7 +133,7 @@ export class SolicitudController {
     await this.solicitudRepository.updateById(id, solicitud);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @put('/solicituds/{id}')
   @response(204, {
     description: 'Solicitud PUT success',
@@ -146,7 +145,7 @@ export class SolicitudController {
     await this.solicitudRepository.replaceById(id, solicitud);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @del('/solicituds/{id}')
   @response(204, {
     description: 'Solicitud DELETE success',

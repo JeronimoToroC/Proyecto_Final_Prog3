@@ -1,4 +1,3 @@
-import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -21,7 +20,7 @@ export class LineasInvestigacionController {
     public lineasInvestigacionRepository: LineasInvestigacionRepository,
   ) { }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @post('/lineas-investigacions')
   @response(200, {
     description: 'LineasInvestigacion model instance',
@@ -43,7 +42,7 @@ export class LineasInvestigacionController {
     return this.lineasInvestigacionRepository.create(lineasInvestigacion);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/lineas-investigacions/count')
   @response(200, {
     description: 'LineasInvestigacion model count',
@@ -55,7 +54,7 @@ export class LineasInvestigacionController {
     return this.lineasInvestigacionRepository.count(where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/lineas-investigacions')
   @response(200, {
     description: 'Array of LineasInvestigacion model instances',
@@ -74,7 +73,7 @@ export class LineasInvestigacionController {
     return this.lineasInvestigacionRepository.find(filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/lineas-investigacions')
   @response(200, {
     description: 'LineasInvestigacion PATCH success count',
@@ -94,7 +93,7 @@ export class LineasInvestigacionController {
     return this.lineasInvestigacionRepository.updateAll(lineasInvestigacion, where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/lineas-investigacions/{id}')
   @response(200, {
     description: 'LineasInvestigacion model instance',
@@ -111,7 +110,7 @@ export class LineasInvestigacionController {
     return this.lineasInvestigacionRepository.findById(id, filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/lineas-investigacions/{id}')
   @response(204, {
     description: 'LineasInvestigacion PATCH success',
@@ -130,7 +129,7 @@ export class LineasInvestigacionController {
     await this.lineasInvestigacionRepository.updateById(id, lineasInvestigacion);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @put('/lineas-investigacions/{id}')
   @response(204, {
     description: 'LineasInvestigacion PUT success',
@@ -142,7 +141,7 @@ export class LineasInvestigacionController {
     await this.lineasInvestigacionRepository.replaceById(id, lineasInvestigacion);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @del('/lineas-investigacions/{id}')
   @response(204, {
     description: 'LineasInvestigacion DELETE success',

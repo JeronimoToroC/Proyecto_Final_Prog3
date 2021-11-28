@@ -1,4 +1,3 @@
-import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -21,7 +20,7 @@ export class ResultadoEvaluacionController {
     public resultadoEvaluacionRepository: ResultadoEvaluacionRepository,
   ) { }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @post('/resultado-evaluacions')
   @response(200, {
     description: 'ResultadoEvaluacion model instance',
@@ -43,7 +42,7 @@ export class ResultadoEvaluacionController {
     return this.resultadoEvaluacionRepository.create(resultadoEvaluacion);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/resultado-evaluacions/count')
   @response(200, {
     description: 'ResultadoEvaluacion model count',
@@ -55,7 +54,7 @@ export class ResultadoEvaluacionController {
     return this.resultadoEvaluacionRepository.count(where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/resultado-evaluacions')
   @response(200, {
     description: 'Array of ResultadoEvaluacion model instances',
@@ -74,7 +73,7 @@ export class ResultadoEvaluacionController {
     return this.resultadoEvaluacionRepository.find(filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/resultado-evaluacions')
   @response(200, {
     description: 'ResultadoEvaluacion PATCH success count',
@@ -94,7 +93,7 @@ export class ResultadoEvaluacionController {
     return this.resultadoEvaluacionRepository.updateAll(resultadoEvaluacion, where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/resultado-evaluacions/{id}')
   @response(200, {
     description: 'ResultadoEvaluacion model instance',
@@ -111,7 +110,7 @@ export class ResultadoEvaluacionController {
     return this.resultadoEvaluacionRepository.findById(id, filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/resultado-evaluacions/{id}')
   @response(204, {
     description: 'ResultadoEvaluacion PATCH success',
@@ -130,7 +129,7 @@ export class ResultadoEvaluacionController {
     await this.resultadoEvaluacionRepository.updateById(id, resultadoEvaluacion);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @put('/resultado-evaluacions/{id}')
   @response(204, {
     description: 'ResultadoEvaluacion PUT success',
@@ -142,7 +141,7 @@ export class ResultadoEvaluacionController {
     await this.resultadoEvaluacionRepository.replaceById(id, resultadoEvaluacion);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @del('/resultado-evaluacions/{id}')
   @response(204, {
     description: 'ResultadoEvaluacion DELETE success',

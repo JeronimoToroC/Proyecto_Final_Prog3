@@ -1,4 +1,3 @@
-import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -21,7 +20,7 @@ export class RecordatoriosController {
     public recordatoriosRepository: RecordatoriosRepository,
   ) { }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @post('/recordatorios')
   @response(200, {
     description: 'Recordatorios model instance',
@@ -43,7 +42,7 @@ export class RecordatoriosController {
     return this.recordatoriosRepository.create(recordatorios);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/recordatorios/count')
   @response(200, {
     description: 'Recordatorios model count',
@@ -55,7 +54,7 @@ export class RecordatoriosController {
     return this.recordatoriosRepository.count(where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/recordatorios')
   @response(200, {
     description: 'Array of Recordatorios model instances',
@@ -74,7 +73,7 @@ export class RecordatoriosController {
     return this.recordatoriosRepository.find(filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/recordatorios')
   @response(200, {
     description: 'Recordatorios PATCH success count',
@@ -94,7 +93,7 @@ export class RecordatoriosController {
     return this.recordatoriosRepository.updateAll(recordatorios, where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/recordatorios/{id}')
   @response(200, {
     description: 'Recordatorios model instance',
@@ -111,7 +110,7 @@ export class RecordatoriosController {
     return this.recordatoriosRepository.findById(id, filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/recordatorios/{id}')
   @response(204, {
     description: 'Recordatorios PATCH success',
@@ -130,7 +129,7 @@ export class RecordatoriosController {
     await this.recordatoriosRepository.updateById(id, recordatorios);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @put('/recordatorios/{id}')
   @response(204, {
     description: 'Recordatorios PUT success',
@@ -142,7 +141,7 @@ export class RecordatoriosController {
     await this.recordatoriosRepository.replaceById(id, recordatorios);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @del('/recordatorios/{id}')
   @response(204, {
     description: 'Recordatorios DELETE success',

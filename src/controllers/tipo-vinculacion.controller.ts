@@ -1,4 +1,3 @@
-import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -21,7 +20,7 @@ export class TipoVinculacionController {
     public tipoVinculacionRepository: TipoVinculacionRepository,
   ) { }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @post('/tipo-vinculacions')
   @response(200, {
     description: 'TipoVinculacion model instance',
@@ -43,7 +42,7 @@ export class TipoVinculacionController {
     return this.tipoVinculacionRepository.create(tipoVinculacion);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/tipo-vinculacions/count')
   @response(200, {
     description: 'TipoVinculacion model count',
@@ -55,7 +54,7 @@ export class TipoVinculacionController {
     return this.tipoVinculacionRepository.count(where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/tipo-vinculacions')
   @response(200, {
     description: 'Array of TipoVinculacion model instances',
@@ -74,7 +73,7 @@ export class TipoVinculacionController {
     return this.tipoVinculacionRepository.find(filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/tipo-vinculacions')
   @response(200, {
     description: 'TipoVinculacion PATCH success count',
@@ -94,7 +93,7 @@ export class TipoVinculacionController {
     return this.tipoVinculacionRepository.updateAll(tipoVinculacion, where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/tipo-vinculacions/{id}')
   @response(200, {
     description: 'TipoVinculacion model instance',
@@ -111,7 +110,7 @@ export class TipoVinculacionController {
     return this.tipoVinculacionRepository.findById(id, filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/tipo-vinculacions/{id}')
   @response(204, {
     description: 'TipoVinculacion PATCH success',
@@ -130,7 +129,7 @@ export class TipoVinculacionController {
     await this.tipoVinculacionRepository.updateById(id, tipoVinculacion);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @put('/tipo-vinculacions/{id}')
   @response(204, {
     description: 'TipoVinculacion PUT success',
@@ -142,7 +141,7 @@ export class TipoVinculacionController {
     await this.tipoVinculacionRepository.replaceById(id, tipoVinculacion);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @del('/tipo-vinculacions/{id}')
   @response(204, {
     description: 'TipoVinculacion DELETE success',
