@@ -15,7 +15,7 @@ export class TipoComite extends Entity {
     type: 'string',
     required: true,
   })
-  nombre: string;
+  name: string;
 
   @hasMany(() => Solicitud, {through: {model: () => ComiteSolicitud}})
   tieneComiteSolicitud: Solicitud[];
