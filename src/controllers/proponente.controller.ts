@@ -1,4 +1,3 @@
-import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -21,7 +20,7 @@ export class ProponenteController {
     public proponenteRepository: ProponenteRepository,
   ) { }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @post('/proponentes')
   @response(200, {
     description: 'Proponente model instance',
@@ -43,7 +42,7 @@ export class ProponenteController {
     return this.proponenteRepository.create(proponente);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/proponentes/count')
   @response(200, {
     description: 'Proponente model count',
@@ -55,7 +54,7 @@ export class ProponenteController {
     return this.proponenteRepository.count(where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/proponentes')
   @response(200, {
     description: 'Array of Proponente model instances',
@@ -74,7 +73,7 @@ export class ProponenteController {
     return this.proponenteRepository.find(filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/proponentes')
   @response(200, {
     description: 'Proponente PATCH success count',
@@ -94,7 +93,7 @@ export class ProponenteController {
     return this.proponenteRepository.updateAll(proponente, where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/proponentes/{id}')
   @response(200, {
     description: 'Proponente model instance',
@@ -111,7 +110,7 @@ export class ProponenteController {
     return this.proponenteRepository.findById(id, filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/proponentes/{id}')
   @response(204, {
     description: 'Proponente PATCH success',
@@ -130,7 +129,7 @@ export class ProponenteController {
     await this.proponenteRepository.updateById(id, proponente);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @put('/proponentes/{id}')
   @response(204, {
     description: 'Proponente PUT success',
@@ -142,7 +141,7 @@ export class ProponenteController {
     await this.proponenteRepository.replaceById(id, proponente);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @del('/proponentes/{id}')
   @response(204, {
     description: 'Proponente DELETE success',

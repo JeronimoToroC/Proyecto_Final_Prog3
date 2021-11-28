@@ -1,4 +1,3 @@
-import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -21,7 +20,7 @@ export class ModalidadController {
     public modalidadRepository: ModalidadRepository,
   ) { }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @post('/modalidads')
   @response(200, {
     description: 'Modalidad model instance',
@@ -43,7 +42,7 @@ export class ModalidadController {
     return this.modalidadRepository.create(modalidad);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/modalidads/count')
   @response(200, {
     description: 'Modalidad model count',
@@ -55,7 +54,7 @@ export class ModalidadController {
     return this.modalidadRepository.count(where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/modalidads')
   @response(200, {
     description: 'Array of Modalidad model instances',
@@ -74,7 +73,7 @@ export class ModalidadController {
     return this.modalidadRepository.find(filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/modalidads')
   @response(200, {
     description: 'Modalidad PATCH success count',
@@ -94,7 +93,7 @@ export class ModalidadController {
     return this.modalidadRepository.updateAll(modalidad, where);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @get('/modalidads/{id}')
   @response(200, {
     description: 'Modalidad model instance',
@@ -111,7 +110,7 @@ export class ModalidadController {
     return this.modalidadRepository.findById(id, filter);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @patch('/modalidads/{id}')
   @response(204, {
     description: 'Modalidad PATCH success',
@@ -130,7 +129,7 @@ export class ModalidadController {
     await this.modalidadRepository.updateById(id, modalidad);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @put('/modalidads/{id}')
   @response(204, {
     description: 'Modalidad PUT success',
@@ -142,7 +141,7 @@ export class ModalidadController {
     await this.modalidadRepository.replaceById(id, modalidad);
   }
 
-  @authenticate("admin")
+  //@authenticate("admin")
   @del('/modalidads/{id}')
   @response(204, {
     description: 'Modalidad DELETE success',
