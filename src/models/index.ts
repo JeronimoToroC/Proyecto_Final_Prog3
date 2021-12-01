@@ -20,3 +20,5 @@ export * from './tipo-solicitud.model';
 export * from './tipo-vinculacion.model';
 export * from './usuario-jurado.model';
 
+export * from './roles.model';
+export * from './foto-users.model';

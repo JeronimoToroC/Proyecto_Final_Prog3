@@ -13,13 +13,13 @@ import {
 import multer from 'multer';
 import path from 'path';
 import {Keys as llaves} from '../config/keys';
-import {Proponente} from '../models';
-import {ProponenteRepository} from '../repositories';
+import {FotoUsers} from '../models';
+import {FotoUsersRepository} from '../repositories';
 
-export class CargaFotoProponente {
+export class CargaFoto {
   constructor(
-    @repository(ProponenteRepository)
-    private fotoRepository: ProponenteRepository
+    @repository(FotoUsersRepository)
+    private fotoRepository: FotoUsersRepository
   ) { }
 
 
@@ -30,7 +30,7 @@ export class CargaFotoProponente {
    * @param request
    */
   //@authenticate("admin")
-  @post('/CargarFotoProponente/{id_proponente}', {
+  @post('/CargarFotoProponente/{proponenteId}', {
     responses: {
       200: {
         content: {
@@ -40,21 +40,57 @@ export class CargaFotoProponente {
             },
           },
         },
-        description: 'Función de carga de la imagen de la persona.',
+        description: 'Función de carga de la imagen del proponente.',
       },
     },
   })
   async cargarFotoProponente(
     @inject(RestBindings.Http.RESPONSE) response: Response,
     @requestBody.file() request: Request,
-    @param.path.number("id_proponente") id: number
+    @param.path.number("proponenteId") id: number
   ): Promise<object | false> {
-    const rutaDocumento = path.join(__dirname, llaves.carpetaFotoProponente);
-    const res = await this.StoreFileToPath(rutaDocumento, llaves.nombreCampoFotoProponente, request, response, llaves.extensionesPermitidasIMG);
+    const rutaDocumento = path.join(__dirname, llaves.carpetaFoto);
+    const res = await this.StoreFileToPath(rutaDocumento, llaves.nombreCampoFoto, request, response, llaves.extensionesPermitidasIMG);
     if (res) {
       const nombre_foto = response.req?.file?.filename;
       if (nombre_foto) {
-        const foto = new Proponente();
+        let foto = new FotoUsers();
+        foto.id_vehiculo = id;
+        foto.nombre = nombre_foto;
+        await this.fotoRepository.save(foto);
+        return {filename: nombre_foto};
+      }
+    }
+    return res;
+  }
+
+  @post('/CargarFotoJurado/{juradoId}', {
+    responses: {
+      200: {
+        content: {
+          'application/json': {
+            schema: {
+              type: 'object',
+            },
+          },
+        },
+        description: 'Función de carga de la imagen del jurado.',
+      },
+    },
+  })
+  async cargarFotoJurado(
+    @inject(RestBindings.Http.RESPONSE) response: Response,
+    @requestBody.file() request: Request,
+    @param.path.number("juradoId") id: number
+  ): Promise<object | false> {
+    const rutaDocumento = path.join(__dirname, llaves.carpetaFoto);
+    const res = await this.StoreFileToPath(rutaDocumento, llaves.nombreCampoFoto, request, response, llaves.extensionesPermitidasIMG);
+    if (res) {
+      const nombre_foto = response.req?.file?.filename;
+      if (nombre_foto) {
+        let foto = new FotoUsers();
+        foto.id_vehiculo = id;
+        foto.nombre = nombre_foto;
         await this.fotoRepository.save(foto);
         return {filename: nombre_foto};
       }
@@ -99,7 +135,7 @@ export class CargaFotoProponente {
           return callback(new HttpErrors[400]('El formato del archivo no es permitido.'));
         },
         limits: {
-          fileSize: llaves.tamMaxFotoProponente
+          fileSize: llaves.tamMaxFoto
         }
       },
       ).single(fieldname);
