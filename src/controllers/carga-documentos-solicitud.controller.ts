@@ -101,7 +101,7 @@ export class CargaDocumentosController {
           return callback(new HttpErrors[400]('El formato del archivo no es permitido.'));
         },
         limits: {
-          fileSize: llaves.tamMaxFotoProponente
+          fileSize: llaves.tamMaxFoto
         }
       },
       ).single(fieldname);
