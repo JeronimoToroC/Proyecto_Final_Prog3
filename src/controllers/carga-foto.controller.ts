@@ -55,7 +55,7 @@ export class CargaFoto {
       const nombre_foto = response.req?.file?.filename;
       if (nombre_foto) {
         let foto = new FotoUsers();
-        foto.id_vehiculo = id;
+        foto.proponenteId = id;
         foto.nombre = nombre_foto;
         await this.fotoRepository.save(foto);
         return {filename: nombre_foto};
@@ -89,7 +89,7 @@ export class CargaFoto {
       const nombre_foto = response.req?.file?.filename;
       if (nombre_foto) {
         let foto = new FotoUsers();
-        foto.id_vehiculo = id;
+        foto.juradoId = id;
         foto.nombre = nombre_foto;
         await this.fotoRepository.save(foto);
         return {filename: nombre_foto};
