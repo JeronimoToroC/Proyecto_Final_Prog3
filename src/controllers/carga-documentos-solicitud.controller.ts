@@ -30,7 +30,7 @@ export class CargaDocumentosController {
    * @param request
    */
   //@authenticate("admin")
-  @post('/CargarDocumento/{id_solicitud}', {
+  @post('/CargarDocumento', {
     responses: {
       200: {
         content: {
