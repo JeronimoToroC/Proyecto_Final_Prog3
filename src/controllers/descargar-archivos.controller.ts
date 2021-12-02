@@ -23,7 +23,7 @@ export class DescargarArchivosController {
 
   constructor(
 
-  ) {}
+  ) { }
 
   /**
    *
@@ -50,7 +50,7 @@ export class DescargarArchivosController {
   })
   async listarArchivos(
     @param.path.number('type') type: number,) {
-    const rutaCarpeta =this.ObtenerRutaDeCarpetaPorTipo(type);
+    const rutaCarpeta = this.ObtenerRutaDeCarpetaPorTipo(type);
     const archivos = await readdir(rutaCarpeta);
     return archivos;
   }
@@ -85,7 +85,7 @@ export class DescargarArchivosController {
     switch (type) {
       //proponente
       case 1:
-        ruta = path.join(__dirname, llaves.nombreCampoFotoProponente);
+        ruta = path.join(__dirname, llaves.nombreCampoFoto);
         break;
       // documento
       case 2:
