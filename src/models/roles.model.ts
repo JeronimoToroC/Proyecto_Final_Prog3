@@ -1,15 +1,15 @@
-import {Entity, model, property, hasMany} from '@loopback/repository';
-import {Proponente} from './proponente.model';
+import {Entity, hasMany, model, property} from '@loopback/repository';
 import {Jurados} from './jurados.model';
+import {Proponente} from './proponente.model';
 
-@model({settings: {strict: false}})
+@model({settings: {strict: true}})
 export class Roles extends Entity {
   @property({
-    type: 'string',
+    type: 'number',
     id: true,
     generated: true,
   })
-  id?: string;
+  id?: number;
 
   @property({
     type: 'string',
