@@ -62,19 +62,19 @@ export class Jurados extends Entity {
   })
   entity: any;
 
-  @hasMany(() => EvaluacionSolicitud, {keyTo: 'juradosId'})
+  @hasMany(() => EvaluacionSolicitud)
   tieneMuchosEvaluacionSolicitud: EvaluacionSolicitud[];
 
-  @hasMany(() => UsuarioJurado, {keyTo: 'juradosId'})
+  @hasMany(() => UsuarioJurado)
   tieneMuchosUsuarioJurado: UsuarioJurado[];
 
-  @hasMany(() => LineasInvestigacion, {through: {model: () => JuradosInvestigacion, keyFrom: 'juradosId', keyTo: 'lineasInvestigacionId'}})
+  @hasMany(() => LineasInvestigacion, {through: {model: () => JuradosInvestigacion}})
   muchosamuchosJuradosInvestigacion: LineasInvestigacion[];
 
-  @belongsTo(() => Roles, {name: 'roles'})
+  @belongsTo(() => Roles)
   rolesId: string;
 
-  @hasMany(() => FotoUsers, {keyTo: 'proponenteId'})
+  @hasMany(() => FotoUsers)
   fotoUsers: FotoUsers[];
 
   constructor(data?: Partial<Jurados>) {

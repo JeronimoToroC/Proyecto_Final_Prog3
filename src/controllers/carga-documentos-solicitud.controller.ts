@@ -4,7 +4,7 @@
 import {inject} from '@loopback/core';
 import {repository} from '@loopback/repository';
 import {
-  HttpErrors, param, post,
+  HttpErrors, post,
   Request,
   requestBody,
   Response,
@@ -30,7 +30,7 @@ export class CargaDocumentosController {
    * @param request
    */
   //@authenticate("admin")
-  @post('/CargarDocumento/{id_solicitud}', {
+  @post('/CargarDocumento', {
     responses: {
       200: {
         content: {
@@ -47,17 +47,13 @@ export class CargaDocumentosController {
   async cargarDocumentoSolicitud(
     @inject(RestBindings.Http.RESPONSE) response: Response,
     @requestBody.file() request: Request,
-    @param.path.number("id_solicitud") id: number
   ): Promise<object | false> {
     const rutaDocumento = path.join(__dirname, llaves.carpetaDocumento);
-    const res = await this.StoreFileToPath(rutaDocumento, llaves.nombreCampoDocumento, request, response, llaves.extensionesPermitidasDOC);
+    let res = await this.StoreFileToPath(rutaDocumento, llaves.nombreCampoDocumento, request, response, llaves.extensionesPermitidasDOC);
     if (res) {
       const nombre_archivo = response.req?.file?.filename;
       if (nombre_archivo) {
         const file = new Solicitud();
-        file.file = id;
-        file.workName = nombre_archivo;
-        await this.documentoRepository.save(file);
         return {filename: nombre_archivo};
       }
     }

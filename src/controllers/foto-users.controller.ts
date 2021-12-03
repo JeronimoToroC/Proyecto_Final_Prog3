@@ -4,18 +4,12 @@ import {
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
 import {FotoUsers} from '../models';
 import {FotoUsersRepository} from '../repositories';
@@ -23,8 +17,8 @@ import {FotoUsersRepository} from '../repositories';
 export class FotoUsersController {
   constructor(
     @repository(FotoUsersRepository)
-    public fotoUsersRepository : FotoUsersRepository,
-  ) {}
+    public fotoUsersRepository: FotoUsersRepository,
+  ) { }
 
   @post('/foto-users')
   @response(200, {
@@ -105,7 +99,7 @@ export class FotoUsersController {
     },
   })
   async findById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @param.filter(FotoUsers, {exclude: 'where'}) filter?: FilterExcludingWhere<FotoUsers>
   ): Promise<FotoUsers> {
     return this.fotoUsersRepository.findById(id, filter);
@@ -116,7 +110,7 @@ export class FotoUsersController {
     description: 'FotoUsers PATCH success',
   })
   async updateById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @requestBody({
       content: {
         'application/json': {
@@ -134,7 +128,7 @@ export class FotoUsersController {
     description: 'FotoUsers PUT success',
   })
   async replaceById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @requestBody() fotoUsers: FotoUsers,
   ): Promise<void> {
     await this.fotoUsersRepository.replaceById(id, fotoUsers);
@@ -144,7 +138,7 @@ export class FotoUsersController {
   @response(204, {
     description: 'FotoUsers DELETE success',
   })
-  async deleteById(@param.path.string('id') id: string): Promise<void> {
+  async deleteById(@param.path.number('id') id: number): Promise<void> {
     await this.fotoUsersRepository.deleteById(id);
   }
 }

@@ -4,18 +4,12 @@ import {
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
 import {Roles} from '../models';
 import {RolesRepository} from '../repositories';
@@ -23,8 +17,8 @@ import {RolesRepository} from '../repositories';
 export class RolController {
   constructor(
     @repository(RolesRepository)
-    public rolesRepository : RolesRepository,
-  ) {}
+    public rolesRepository: RolesRepository,
+  ) { }
 
   @post('/roles')
   @response(200, {
@@ -105,7 +99,7 @@ export class RolController {
     },
   })
   async findById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @param.filter(Roles, {exclude: 'where'}) filter?: FilterExcludingWhere<Roles>
   ): Promise<Roles> {
     return this.rolesRepository.findById(id, filter);
@@ -116,7 +110,7 @@ export class RolController {
     description: 'Roles PATCH success',
   })
   async updateById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @requestBody({
       content: {
         'application/json': {
@@ -134,7 +128,7 @@ export class RolController {
     description: 'Roles PUT success',
   })
   async replaceById(
-    @param.path.string('id') id: string,
+    @param.path.number('id') id: number,
     @requestBody() roles: Roles,
   ): Promise<void> {
     await this.rolesRepository.replaceById(id, roles);
@@ -144,7 +138,7 @@ export class RolController {
   @response(204, {
     description: 'Roles DELETE success',
   })
-  async deleteById(@param.path.string('id') id: string): Promise<void> {
+  async deleteById(@param.path.number('id') id: number): Promise<void> {
     await this.rolesRepository.deleteById(id);
   }
 }
