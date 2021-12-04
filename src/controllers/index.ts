@@ -38,3 +38,4 @@ export * from './foto-users.controller';
 export * from './jurados-foto-users.controller';
 export * from './proponente-foto-users.controller';
 export * from './carga-foto.controller';
+export * from './solicitud-evaluacion-solicitud.controller';

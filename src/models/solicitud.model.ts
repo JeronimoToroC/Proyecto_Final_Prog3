@@ -1,6 +1,7 @@
 import {belongsTo, Entity, hasMany, model, property} from '@loopback/repository';
 import {Proponente} from './proponente.model';
 import {Recordatorios} from './recordatorios.model';
+import {EvaluacionSolicitud} from './evaluacion-solicitud.model';
 
 @model({
   settings: {
@@ -91,6 +92,9 @@ export class Solicitud extends Entity {
 
   @belongsTo(() => Proponente)
   proponenteId: number;
+
+  @hasMany(() => EvaluacionSolicitud)
+  evaluacionSolicituds: EvaluacionSolicitud[];
 
   constructor(data?: Partial<Solicitud>) {
     super(data);
