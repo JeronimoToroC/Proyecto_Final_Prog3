@@ -22,11 +22,6 @@ export class EvaluacionSolicitud extends Entity {
   id?: number;
 
   @property({
-    type: 'number',
-  })
-  juradosId?: number;
-
-  @property({
     type: 'date',
   })
   fechaInvitacion?: string;
@@ -40,6 +35,7 @@ export class EvaluacionSolicitud extends Entity {
     type: 'boolean',
   })
   respuesta?: true;
+
   @property({
     type: 'string',
   })
@@ -48,10 +44,6 @@ export class EvaluacionSolicitud extends Entity {
   @hasMany(() => ResultadoEvaluacion)
   tienemuchosResultadoEvaluacion: ResultadoEvaluacion[];
 
-  @property({
-    type: 'number',
-  })
-  solicitudId?: number;
   // Define well-known properties here
 
   // Indexer property to allow additional data
