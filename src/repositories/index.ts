@@ -19,3 +19,4 @@ export * from './usuario-jurado.repository';
 
 export * from './roles.repository';
 export * from './foto-users.repository';
+export * from './notificar-jurado.repository';

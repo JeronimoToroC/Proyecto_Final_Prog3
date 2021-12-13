@@ -5,6 +5,7 @@ import {JuradosInvestigacion} from './jurados-investigacion.model';
 import {LineasInvestigacion} from './lineas-investigacion.model';
 import {Roles} from './roles.model';
 import {UsuarioJurado} from './usuario-jurado.model';
+import {NotificarJurado} from './notificar-jurado.model';
 
 @model()
 export class Jurados extends Entity {
@@ -76,6 +77,9 @@ export class Jurados extends Entity {
 
   @hasMany(() => FotoUsers)
   fotoUsers: FotoUsers[];
+
+  @hasMany(() => NotificarJurado)
+  notificarJurados: NotificarJurado[];
 
   constructor(data?: Partial<Jurados>) {
     super(data);

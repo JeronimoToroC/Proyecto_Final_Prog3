@@ -12,8 +12,7 @@ import {
   getModelSchemaRef, param, patch, post, put, requestBody,
   response
 } from '@loopback/rest';
-import {Keys} from '../config/keys';
-import {EvaluacionSolicitud, Jurados, NotificacionCorreo} from '../models';
+import {EvaluacionSolicitud} from '../models';
 import {EvaluacionSolicitudRepository} from '../repositories';
 import {NotificacionesService} from '../services';
 
@@ -42,13 +41,7 @@ export class EvaluacionSolicitudController {
       },
     })
     evaluacionSolicitud: Omit<EvaluacionSolicitud, 'id'>,
-    jurado: Omit<Jurados, 'id'>,
   ): Promise<EvaluacionSolicitud> {
-    const notiticacion = new NotificacionCorreo();
-    notiticacion.email = jurado.email;
-    notiticacion.asunto = "Invitacion a evaluar";
-    notiticacion.mensaje = `${Keys.saludo_notificaciones} ${jurado.name}<br/>${Keys.mensaje_solicitud} ${Keys.asunto_definicion_usuario} ${jurado.email}<br/>${Keys.mensaje_para_aprovar}${Keys.url_confirmar_participacion}`;
-    this.servicioNotificaciones.enviarCorreo(notiticacion);
     return this.evaluacionSolicitudRepository.create(evaluacionSolicitud);
   }
 
