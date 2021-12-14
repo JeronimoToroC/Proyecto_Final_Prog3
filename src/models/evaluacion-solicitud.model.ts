@@ -24,11 +24,6 @@ export class EvaluacionSolicitud extends Entity {
   @property({
     type: 'date',
   })
-  fechaInvitacion?: string;
-
-  @property({
-    type: 'date',
-  })
   fechaRespuesta?: string;
 
   @property({
