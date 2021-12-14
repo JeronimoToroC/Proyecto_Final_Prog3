@@ -26,3 +26,4 @@ export * from './tipo-vinculacion.model';
 export * from './usuario-jurado.model';
 
 export * from './notificar-jurado.model';
+export * from './entidad.model';

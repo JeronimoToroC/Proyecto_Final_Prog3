@@ -3,9 +3,9 @@ import {EvaluacionSolicitud} from './evaluacion-solicitud.model';
 import {FotoUsers} from './foto-users.model';
 import {JuradosInvestigacion} from './jurados-investigacion.model';
 import {LineasInvestigacion} from './lineas-investigacion.model';
+import {NotificarJurado} from './notificar-jurado.model';
 import {Roles} from './roles.model';
 import {UsuarioJurado} from './usuario-jurado.model';
-import {NotificarJurado} from './notificar-jurado.model';
 
 @model()
 export class Jurados extends Entity {
@@ -57,12 +57,6 @@ export class Jurados extends Entity {
   })
   foto?: string;
 
-  @property({
-    type: 'any',
-    required: true,
-  })
-  entity: any;
-
   @hasMany(() => EvaluacionSolicitud)
   tieneMuchosEvaluacionSolicitud: EvaluacionSolicitud[];
 
@@ -80,6 +74,11 @@ export class Jurados extends Entity {
 
   @hasMany(() => NotificarJurado)
   notificarJurados: NotificarJurado[];
+
+  @property({
+    type: 'number',
+  })
+  entidadId?: number;
 
   constructor(data?: Partial<Jurados>) {
     super(data);
