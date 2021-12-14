@@ -12,8 +12,7 @@ import {
   getModelSchemaRef, param, patch, post, put, requestBody,
   response
 } from '@loopback/rest';
-import {Keys} from '../config/keys';
-import {NotificacionCorreo, Proponente} from '../models';
+import {Proponente} from '../models';
 import {ProponenteRepository} from '../repositories';
 import {AdminDePasswordsService, NotificacionesService} from '../services';
 
@@ -47,14 +46,14 @@ export class ProponenteController {
     })
     proponente: Omit<Proponente, 'id'>,
   ): Promise<Proponente> {
-    let password = this.passwordService.generateRandomPassword()
+    /* let password = this.passwordService.generateRandomPassword()
     const notiticacion = new NotificacionCorreo();
     notiticacion.email = proponente.email;
     notiticacion.asunto = "Registro en el sistema";
     notiticacion.mensaje = `${Keys.saludo_notificaciones} ${proponente.name}<br/>${Keys.asunto_generacion_clave} ${password} ${Keys.asunto_definicion_usuario} ${proponente.email}`;
     this.servicioNotificaciones.enviarCorreo(notiticacion);
     let cryptingPassword = this.passwordService.cryptngText(password)
-    proponente.password = cryptingPassword
+    proponente.password = cryptingPassword */
     return this.proponenteRepository.create(proponente);
   }
 

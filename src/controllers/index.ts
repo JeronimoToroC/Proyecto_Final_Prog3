@@ -41,3 +41,5 @@ export * from './tipo-vinculacion.controller';
 export * from './usuario-jurado.controller';
 
 
+export * from './entidad.controller';
+export * from './entidad-jurados.controller';
