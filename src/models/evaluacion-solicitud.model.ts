@@ -44,6 +44,10 @@ export class EvaluacionSolicitud extends Entity {
   @hasMany(() => ResultadoEvaluacion)
   tienemuchosResultadoEvaluacion: ResultadoEvaluacion[];
 
+  @property({
+    type: 'number',
+  })
+  notificarJuradoId?: number;
   // Define well-known properties here
 
   // Indexer property to allow additional data

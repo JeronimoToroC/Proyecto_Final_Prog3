@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {EvaluacionSolicitud} from './evaluacion-solicitud.model';
 
 @model({settings: {strict: true}})
 export class NotificarJurado extends Entity {
@@ -24,6 +25,9 @@ export class NotificarJurado extends Entity {
     type: 'number',
   })
   juradosId?: number;
+
+  @hasMany(() => EvaluacionSolicitud)
+  evaluacionSolicituds: EvaluacionSolicitud[];
   // Define well-known properties here
 
   // Indexer property to allow additional data
