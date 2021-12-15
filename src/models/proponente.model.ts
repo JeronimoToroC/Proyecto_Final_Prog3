@@ -4,8 +4,6 @@ import {Roles} from './roles.model';
 import {Solicitud} from './solicitud.model';
 import {TipoVinculacion} from './tipo-vinculacion.model';
 
-const URLBASE = "http://localhost:3001"
-
 @model()
 export class Proponente extends Entity {
   @property({
