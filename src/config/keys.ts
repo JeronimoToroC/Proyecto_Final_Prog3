@@ -29,11 +29,13 @@ export namespace Keys {
   export const mensaje_solicitud = "Se le ha elejido como jurado para evaluar una solicitud al usuarios con el correo de ";
   export const mensaje_recordatorio = "Le recordamos que debe de evaluar la solicitud que se le asigno";
   export const arg_destino_correo_notificaciones = "email";
+  export const arg_resumen = "Resumen: ";
   export const arg_mensaje_correo_notificaciones = "mensaje";
   export const arg_asunto_correo_notificaciones = "asunto";
   export const arg_destino_sms_notificaciones = "destino";
   export const arg_mensaje_sms_notificaciones = "mensaje";
   export const arg_mensaje_email_fechaInv = "Fecha de invitacion: ";
+  export const arg_mensaje_email_fechaRes = "Fecha del resumen: ";
   export const arg_hash_notificaciones = "hash";
   export const url_crear_token = "http://localhost:5001/crear-token";
   export const arg_nombre_token = "nombre";

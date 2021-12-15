@@ -13,6 +13,16 @@ export class RecordatorioJurado extends Entity {
     type: 'number',
   })
   juradosId?: number;
+
+  @property({
+    type: 'string',
+  })
+  fecha?: string;
+
+  @property({
+    type: 'string',
+  })
+  resumen?: string;
   // Define well-known properties here
 
   // Indexer property to allow additional data
