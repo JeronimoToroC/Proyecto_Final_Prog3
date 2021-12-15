@@ -22,11 +22,12 @@ export namespace Keys {
   export const asunto_definicion_usuario = "y su usuario es";
   export const saludo_notificaciones = "Hola ";
   export const mensaje_cambio_clave = "Se ha modificado su clave en el sistema";
-  export const url_confirmar_participacion = "http://localhost:4200/parameters/evaluacion-solicitud-aceptar";
-  export const url_rechazar_participacion = "http://localhost:4200/parameters/evaluacion-solicitud-rechazar";
+  export const url_confirmar_participacion = "http://localhost:4200/parameters/evaluacion-solicitud-aceptar/";
+  export const url_rechazar_participacion = "http://localhost:4200/parameters/evaluacion-solicitud-rechazar/";
   export const mensaje_para_aprovar = "Para confirmar su participación ingrese al siguiente link ";
   export const mensaje_para_rechazar = "Para rechazar su participación ingrese al siguiente link ";
   export const mensaje_solicitud = "Se le ha elejido como jurado para evaluar una solicitud al usuarios con el correo de ";
+  export const mensaje_recordatorio = "Le recordamos que debe de evaluar la solicitud que se le asigno";
   export const arg_destino_correo_notificaciones = "email";
   export const arg_mensaje_correo_notificaciones = "mensaje";
   export const arg_asunto_correo_notificaciones = "asunto";

@@ -16,10 +16,10 @@ export class ResultadoEvaluacion extends Entity {
   result: string;
 
   @property({
-    type: 'any',
+    type: 'string',
     required: true,
   })
-  completedFormat: any;
+  completedFormat: string;
 
   @property({
     type: 'string',

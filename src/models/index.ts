@@ -27,3 +27,4 @@ export * from './usuario-jurado.model';
 
 export * from './notificar-jurado.model';
 export * from './entidad.model';
+export * from './recordatorio-jurado.model';
