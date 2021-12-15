@@ -44,3 +44,5 @@ export * from './usuario-jurado.controller';
 export * from './entidad.controller';
 export * from './entidad-jurados.controller';
 export * from './notificar-jurado-evaluacion-solicitud.controller';
+export * from './recordatorio-jurado.controller';
+export * from './jurados-recordatorio-jurado.controller';

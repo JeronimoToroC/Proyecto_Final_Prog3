@@ -91,7 +91,7 @@ export class Solicitud extends Entity {
   tipoSolicitudId?: number;
 
   @belongsTo(() => Proponente)
-  proponenteId: number;
+  proponenteId: string;
 
   @hasMany(() => NotificarJurado)
   notificarJurados: NotificarJurado[];

@@ -51,9 +51,10 @@ export class NotificarJuradoController {
         const notiticacion = new NotificacionCorreo();
         notiticacion.email = jurado.email;
         notiticacion.asunto = "Invitacion a evaluar";
-        notiticacion.mensaje = `${Keys.saludo_notificaciones} ${jurado.name}<br/>${Keys.mensaje_solicitud} ${Keys.asunto_definicion_usuario} ${jurado.email}<br/>${Keys.mensaje_para_aprovar}${Keys.url_confirmar_participacion}<br/>${Keys.mensaje_para_rechazar}${Keys.url_rechazar_participacion}<br/>${Keys.arg_mensaje_email_fechaInv}${notificarJurado.fechaInvitacion}`;
-        this.servicioNotificaciones.enviarCorreo(notiticacion);
+        notiticacion.mensaje = `${Keys.saludo_notificaciones} ${jurado.name}<br/>${Keys.mensaje_solicitud} ${jurado.email}<br/>${Keys.mensaje_para_aprovar}${Keys.url_confirmar_participacion}${notificarJurado.id}<br/>${Keys.mensaje_para_rechazar}${Keys.url_rechazar_participacion}${notificarJurado.id}<br/>${Keys.arg_mensaje_email_fechaInv}${notificarJurado.fechaInvitacion}`;
+        // this.servicioNotificaciones.enviarCorreo(notiticacion);
         await this.notificarJuradoRepository.create(notificarJurado);
+        // console.log("Jeronimo noti", this.notificarJuradoRepository.get())
         return true;
       } else {
         return false;

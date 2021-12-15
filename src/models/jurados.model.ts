@@ -6,6 +6,7 @@ import {LineasInvestigacion} from './lineas-investigacion.model';
 import {NotificarJurado} from './notificar-jurado.model';
 import {Roles} from './roles.model';
 import {UsuarioJurado} from './usuario-jurado.model';
+import {RecordatorioJurado} from './recordatorio-jurado.model';
 
 @model()
 export class Jurados extends Entity {
@@ -79,6 +80,9 @@ export class Jurados extends Entity {
     type: 'number',
   })
   entidadId?: number;
+
+  @hasMany(() => RecordatorioJurado)
+  recordatorioJurados: RecordatorioJurado[];
 
   constructor(data?: Partial<Jurados>) {
     super(data);

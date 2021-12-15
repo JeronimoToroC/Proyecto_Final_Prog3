@@ -149,4 +149,15 @@ export class ResultadoEvaluacionController {
   async deleteById(@param.path.number('id') id: number): Promise<void> {
     await this.resultadoEvaluacionRepository.deleteById(id);
   }
+  @get('/resultado-evaluacions/count/{evaluacionSolicitudId}')
+  @response(200, {
+    description: 'ResultadoEvaluacion model count',
+    content: {'application/json': {schema: CountSchema}},
+  })
+  async countSol(
+    @param.where(ResultadoEvaluacion) where?: Where<ResultadoEvaluacion>,
+  ): Promise<Count> {
+
+    return this.resultadoEvaluacionRepository.count(where);
+  }
 }
