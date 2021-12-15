@@ -22,7 +22,7 @@ export class EvaluacionSolicitud extends Entity {
   id?: number;
 
   @property({
-    type: 'date',
+    type: 'string',
   })
   fechaRespuesta?: string;
 

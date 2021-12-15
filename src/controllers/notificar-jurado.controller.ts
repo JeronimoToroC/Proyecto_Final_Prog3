@@ -46,15 +46,14 @@ export class NotificarJuradoController {
     notificarJurado: Omit<NotificarJurado, 'id'>
   ): Promise<boolean> {
     try {
-      let jurado = await this.repositorioJurado.findById(notificarJurado.juradosId);
+      const jurado = await this.repositorioJurado.findById(notificarJurado.juradosId);
       if (jurado) {
         const notiticacion = new NotificacionCorreo();
+        const idNotificacion = await this.notificarJuradoRepository.create(notificarJurado);
         notiticacion.email = jurado.email;
         notiticacion.asunto = "Invitacion a evaluar";
-        notiticacion.mensaje = `${Keys.saludo_notificaciones} ${jurado.name}<br/>${Keys.mensaje_solicitud} ${jurado.email}<br/>${Keys.mensaje_para_aprovar}${Keys.url_confirmar_participacion}${notificarJurado.id}<br/>${Keys.mensaje_para_rechazar}${Keys.url_rechazar_participacion}${notificarJurado.id}<br/>${Keys.arg_mensaje_email_fechaInv}${notificarJurado.fechaInvitacion}`;
-        // this.servicioNotificaciones.enviarCorreo(notiticacion);
-        await this.notificarJuradoRepository.create(notificarJurado);
-        // console.log("Jeronimo noti", this.notificarJuradoRepository.get())
+        notiticacion.mensaje = `${Keys.saludo_notificaciones} ${jurado.name}<br/>${Keys.mensaje_solicitud} ${jurado.email}<br/>${Keys.mensaje_para_aprovar}${Keys.url_confirmar_participacion}${idNotificacion.id}<br/>${Keys.mensaje_para_rechazar}${Keys.url_rechazar_participacion}${idNotificacion.id}<br/>${Keys.arg_mensaje_email_fechaInv}${idNotificacion.fechaInvitacion}`;
+        this.servicioNotificaciones.enviarCorreo(notiticacion);
         return true;
       } else {
         return false;
